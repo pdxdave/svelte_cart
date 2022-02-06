@@ -1,11 +1,13 @@
 <script>
     import links from '../../constants/links';
     import {link} from 'svelte-routing';
+    import {fly, fade} from 'svelte/transition';
+
     // global store
     import globalStore from '../../stores/globalStore'
 </script>
-<div class="sidebar-container">
-    <div class="sidebar">
+<div class="sidebar-container" transition:fly={{x: -1000}}>
+    <div class="sidebar" transition:fade={{delay: 400}}>
         <div class="sidebar-header">
             <button 
                     on:click={() => {globalStore.toggleItem('sidebar', false)}}

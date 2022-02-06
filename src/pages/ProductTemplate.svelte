@@ -2,6 +2,7 @@
     export let id;
     export let location;
     // global store
+    import globalStore from '../stores/globalStore';
 
     import products from '../stores/defaultProducts';
     import Loading from '../components/Loading.svelte';
@@ -26,7 +27,7 @@
                 <h2>${product.price}</h2>
                 <p>{product.description}</p>
                 <button 
-                    on:click={() => {console.log('add to cart')}}
+                    on:click={() => {globalStore.toggleItem('cart', true)}}
                     class="btn btn-primary btn-block">
                     add to cart
                 </button>
