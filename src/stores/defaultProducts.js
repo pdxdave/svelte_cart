@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { writable, derived } from "svelte/store";
 import localProducts from '../localProducts'
 
 const store = writable(flattenProduct([...localProducts]));
@@ -11,6 +11,10 @@ function flattenProduct(data) {
         return {...item, image}
     })
 }
+
+export const featuredStore = derived(store, ($banana) => {
+    return $banana.filter(item => item.featured === true)
+})
 
 
 export default store;
