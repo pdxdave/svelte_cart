@@ -1,14 +1,18 @@
 <script>
     // cart button
     import CartButton from '../Cart/CartButton.svelte';
-    // global store
     import {link} from 'svelte-routing';
+    // global store
+    import globalStore from '../../stores/globalStore'
+    
 
 </script>
 
 <nav class="navbar">
     <div class="nav-center">
-        <button class="btn-sidebar-toggle">
+        <button 
+            on:click={() => {globalStore.toggleItem('sidebar', true)}}
+            class="btn-sidebar-toggle">
             <i class="fas fa-bars"></i>
         </button>
         <a href="/" class="nav-logo" use:link>

@@ -8,13 +8,16 @@
 	import ProductTemplate from './pages/ProductTemplate.svelte';
 	import Navbar from './components/Navbar/Navbar.svelte';
 	import Sidebar from './components/Navbar/Sidebar.svelte';
+	import globalStore from './stores/globalStore';
 
 
 	import {Link, Router, Route} from 'svelte-routing';
 </script>
 <Router>
 	<Navbar />
-	<Sidebar />
+	{#if $globalStore.sidebar}
+		<Sidebar />
+	{/if}
 	<Route path="/" component={Home}/>
 	<Route path="/about" component={About}/>
 	<Route path="/products" component={Products}/>
