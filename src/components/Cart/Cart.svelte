@@ -4,7 +4,7 @@
     import {link} from 'svelte-routing';
     // item list
 
-    let user = false;
+    let user = true;
 </script>
 
 <div class="cart-overlay" transition:blur>
@@ -27,9 +27,11 @@
                     on:click={() => {globalStore.toggleItem('cart', false)}}
                     class="btn btn-primary btn-block" use:link>checkout</a>
             {:else}
-                <a href="/login" 
-                on:click={() => {globalStore.toggleItem('cart', false)}}
-                    class="btn btn-primary btn-block" use:link>login</a>
+                <p class="cart-login"> to checkout please 
+                    <a href="/login" 
+                    on:click={() => {globalStore.toggleItem('cart', false)}}
+                    use:link>login</a>
+                </p> 
             {/if}
             </div>
         </div><!-- end of cart -->
