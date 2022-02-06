@@ -4,4 +4,4 @@
 
 <h1>Products Page</h1>
 
-<Products />
+<Products title="our products"/>
