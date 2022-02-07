@@ -47,6 +47,19 @@ export const increaseAmount = (id) => {
         return toggleAmount(id, storeValue, 'inc')
     })
 }
+    // if decreasing makes item 0 in cart, we want to remove it
+export const decreaseAmount = (id) => {
+    cart.update(storeValue => {
+        let item = storeValue.find(item => item.id === id);
+        let cart; // will be new value for cart
+        if(item.amount === 1){
+            cart = remove(id, storeValue)
+        } else {
+            cart = toggleAmount(id, storeValue, 'dec')
+        }
+        return [...cart]
+    })
+}
 
 // local storage
 
