@@ -12,7 +12,7 @@ export const cartTotal = derived(cart, ($banana) => {
 })
 
 
-// local && reusable
+// local - reusable
 const remove = (id, items) => {
     return items.filter(item => item.id !== id)
 }
@@ -33,7 +33,7 @@ const toggleAmount = (id, items, action) => {
     })
 }
 
-// global && feeds local functions
+// global - feeds local functions
 
     // 
 export const removeItem = (id) => {
@@ -58,6 +58,25 @@ export const decreaseAmount = (id) => {
             cart = toggleAmount(id, storeValue, 'dec')
         }
         return [...cart]
+    })
+}
+
+    // adding to the cart we'll pass the whole product.
+    // called in productTemplate
+export const addToCart = (product) => {
+    cart.update(storeValue => {
+        const {id, image, title, price} = product;
+        // see if item is already in the cart
+        let item = storeValue.find(item => item.id === id);
+        let cart;
+        if(item){
+            cart = toggleAmount(id, storeValue, 'inc')
+        } else {
+            // creating a new object with data we brought it
+            let newItem = {id, image, title, price, amount: 1};
+            cart = [...storeValue, newItem]
+        }
+        return cart;
     })
 }
 
