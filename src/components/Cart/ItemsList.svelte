@@ -4,7 +4,7 @@
     import {fly} from 'svelte/transition';
     import {flip} from 'svelte/animate';
 
-    // alternative to derived store
+    // alternative to derived store in cart
     // $: total = $cart.reduce((acc, curr) => {
     //     return (acc += curr.amount * curr.price)
     // }, 0)
