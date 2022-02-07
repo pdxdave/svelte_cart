@@ -2,6 +2,7 @@
     import links from '../../constants/links';
     import {link} from 'svelte-routing';
     import {fly, fade} from 'svelte/transition';
+    import LoginLink from '../LoginLink.svelte';
 
     // global store
     import globalStore from '../../stores/globalStore'
@@ -20,6 +21,7 @@
             {#each links as sideLink}
                 <li><a href={sideLink.url} use:link>{sideLink.text}</a></li>
             {/each}
+            <li><LoginLink /></li>
         </ul>
     </div>
 </div>
