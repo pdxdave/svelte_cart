@@ -3,7 +3,7 @@
     import {fly, fade, blur} from 'svelte/transition';
     import {link} from 'svelte-routing';
     // item list
-
+    import ItemsList from './ItemsList.svelte';
     let user = true;
 </script>
 
@@ -19,7 +19,7 @@
                 <h2 class="cart-title">your bag</h2>
                 <span />
             </div><!-- end of header-->
-            <p>cart items</p>
+            <ItemsList />
             
             <div class="cart-footer">
             {#if user}
