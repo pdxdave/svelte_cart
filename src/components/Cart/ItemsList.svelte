@@ -1,8 +1,17 @@
 <script>
     import Item from './Item.svelte';
-    import cart, {cartTotal} from '../../stores/cart';
+    import cart, {cartTotal, setStorageCart} from '../../stores/cart';
     import {fly} from 'svelte/transition';
     import {flip} from 'svelte/animate';
+    import {afterUpdate} from 'svelte';
+
+    /*
+        each time we update the items list, it will persist in the
+        local storage. that's what afterUpdate is doing.
+    */
+    afterUpdate(() => {
+        setStorageCart($cart)
+    })
 
     // alternative to derived store in cart
     // $: total = $cart.reduce((acc, curr) => {
